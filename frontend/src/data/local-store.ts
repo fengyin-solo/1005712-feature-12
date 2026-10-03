@@ -3,6 +3,9 @@ import type { EntryRow } from './types'
 
 // 本地持久化：数据放在 localStorage 里，刷新、关掉再打开都还在。
 const STORAGE_KEY = 'substation-protection:entries'
+// 种子结构调整（如录波矩阵、巡视待复查联动）时抬版本，旧缓存自动重种。
+const STORAGE_VERSION = 2
+const VERSION_KEY = 'substation-protection:version'
 
 function clone<T>(value: T): T {
   return JSON.parse(JSON.stringify(value)) as T
@@ -11,6 +14,12 @@ function clone<T>(value: T): T {
 function readStorage(): Record<string, EntryRow[]> {
   const fallback = clone(SEED_ROWS)
   if (typeof window === 'undefined' || !window.localStorage) {
+    return fallback
+  }
+  // 版本对不上（首次升级到新结构）时整库重种，避免旧占位数据与新口径混用。
+  if (window.localStorage.getItem(VERSION_KEY) !== String(STORAGE_VERSION)) {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(fallback))
+    window.localStorage.setItem(VERSION_KEY, String(STORAGE_VERSION))
     return fallback
   }
   const raw = window.localStorage.getItem(STORAGE_KEY)
@@ -23,6 +32,7 @@ function readStorage(): Record<string, EntryRow[]> {
     return { ...fallback, ...parsed }
   } catch {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(fallback))
+    window.localStorage.setItem(VERSION_KEY, String(STORAGE_VERSION))
     return fallback
   }
 }

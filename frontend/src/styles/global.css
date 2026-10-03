@@ -35,3 +35,46 @@ body { margin: 0; background: #f6f8fb; color: #1f2937; }
 .error-text { color: #b42318; }
 .status-legend { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 10px; font-size: 12px; color: var(--muted); }
 .legend-item { background: #eef2f7; border-radius: 999px; padding: 2px 10px; }
+.legend-item.tip { background: #fff7ed; color: #9a3412; }
+
+/* 故障录波：线路分行 × 故障类型分栏 */
+.matrix-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; background: #fff; }
+.matrix-table { width: 100%; min-width: 960px; border-collapse: separate; border-spacing: 0; }
+.matrix-table th, .matrix-table td { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); vertical-align: top; }
+.matrix-table thead th { position: sticky; top: 0; background: #f1f5f9; padding: 10px 12px; font-size: 13px; text-align: left; z-index: 2; }
+.matrix-table .line-col { position: sticky; left: 0; z-index: 1; background: #f8fafc; min-width: 200px; }
+.matrix-table thead .line-col { z-index: 3; background: #e7edf4; }
+.matrix-table tbody tr:last-child .line-col, .matrix-table tbody tr:last-child td { border-bottom: none; }
+.line-name { display: block; font-size: 13px; font-weight: 600; }
+.line-count { display: block; margin-top: 4px; font-size: 12px; color: var(--muted); font-weight: 400; }
+.matrix-cell { padding: 8px; min-width: 260px; background: #fff; }
+.cell-empty { margin: 0; padding: 18px 0; text-align: center; color: #a3afc0; font-size: 12px; }
+.wave-card { border: 1px solid var(--border); border-left-width: 3px; border-radius: 6px; padding: 8px 10px; margin-bottom: 8px; background: #fff; }
+.wave-card:last-child { margin-bottom: 0; }
+.wave-card.is-pending { border-left-color: #d92d20; background: #fef3f2; }
+.wave-card.is-active { border-left-color: #b54708; background: #fffaeb; }
+.wave-card.is-qualified { border-left-color: #175cd3; background: #eff8ff; }
+.wave-card.is-archived { border-left-color: #98a2b3; background: #f8fafc; opacity: 0.78; }
+.wave-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.wave-code { font-size: 13px; font-weight: 600; }
+.wave-status { font-size: 11px; color: var(--muted); background: #fff; border: 1px solid var(--border); border-radius: 999px; padding: 1px 8px; white-space: nowrap; }
+.wave-meta { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 6px 0 0; }
+.wave-meta div { display: flex; gap: 4px; font-size: 12px; }
+.wave-meta dt { color: var(--muted); margin: 0; }
+.wave-meta dd { margin: 0; }
+.wave-conclusion { margin: 6px 0 0; font-size: 12px; color: #334155; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.wave-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+
+/* 分析签字弹窗 */
+.modal-mask { position: fixed; inset: 0; background: rgba(16, 24, 40, 0.45); display: flex; align-items: center; justify-content: center; z-index: 20; }
+.modal-box { width: 520px; max-width: calc(100vw - 32px); background: #fff; border-radius: 10px; padding: 16px 18px; box-shadow: 0 12px 32px rgba(16, 24, 40, 0.25); }
+.modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.modal-head h3 { margin: 0; font-size: 15px; }
+.modal-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 10px; padding: 8px 10px; background: #f8fafc; border-radius: 6px; font-size: 12px; }
+.modal-meta div { display: flex; gap: 4px; }
+.modal-meta dt { color: var(--muted); margin: 0; }
+.modal-meta dd { margin: 0; font-weight: 500; }
+.modal-form label { display: block; margin-bottom: 10px; }
+.modal-form label > span { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+.modal-form input, .modal-form textarea { width: 100%; border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; font: inherit; font-size: 13px; resize: vertical; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 8px; }
