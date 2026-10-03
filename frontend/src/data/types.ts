@@ -18,6 +18,8 @@ export type ModuleMeta = {
   actions: string[]
   actionTargets: Record<string, string>
   metrics: string[]
+  // 状态必须按 statuses 顺序逐档正向推进的模块（如故障录波），倒序/跨档改动由服务层挡回。
+  orderedFlow?: boolean
 }
 
 export type PageResult = {
@@ -35,4 +37,27 @@ export type ActionResult = {
 export type OverviewResult = {
   cards: { label: string; value: number }[]
   modules: { name: string; created: number; pending: number; abnormal: number }[]
+}
+
+// 故障录波分栏视图：按故障线路分行、故障类型分栏。
+export type FaultCard = {
+  id: number
+  录波编号: string
+  故障电流: string
+  故障时间: string
+  status: string
+  分析人: string
+  分析结论: string
+}
+
+export type FaultLineGroup = {
+  line: string
+  cells: { type: string; cards: FaultCard[] }[]
+  total: number
+  monthCount: number
+}
+
+export type FaultBoard = {
+  types: string[]
+  lines: FaultLineGroup[]
 }

@@ -35,3 +35,49 @@ body { margin: 0; background: #f6f8fb; color: #1f2937; }
 .error-text { color: #b42318; }
 .status-legend { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 10px; font-size: 12px; color: var(--muted); }
 .legend-item { background: #eef2f7; border-radius: 999px; padding: 2px 10px; }
+
+/* 页签 */
+.tab-bar { display: flex; gap: 8px; margin: 4px 0 12px; }
+.tab-btn { border: 1px solid var(--border); background: #fff; border-radius: 6px 6px 0 0; padding: 6px 16px; cursor: pointer; font-size: 13px; color: var(--muted); }
+.tab-btn.active { background: var(--brand); border-color: var(--brand); color: #fff; }
+
+/* 故障录波分栏视图 */
+.board-wrap { overflow-x: auto; }
+.board-table { border-collapse: separate; border-spacing: 0; min-width: 960px; }
+.board-table th, .board-table td { border: 1px solid var(--border); vertical-align: top; font-size: 13px; }
+.board-table thead th { background: #eef2f7; padding: 8px 10px; text-align: left; white-space: nowrap; }
+.board-table .line-col { width: 180px; background: #f8fafc; position: sticky; left: 0; z-index: 1; }
+.board-table thead .line-col { z-index: 2; }
+.line-name { font-weight: 600; }
+.line-meta { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.board-cell { min-width: 230px; padding: 8px; display: table-cell; }
+.board-cell .fault-card + .fault-card { margin-top: 8px; }
+.fault-card { background: #fff; border: 1px solid var(--border); border-left-width: 3px; border-radius: 6px; padding: 8px 10px; }
+.fault-card.s-0 { border-left-color: #d92d20; background: #fef3f2; }
+.fault-card.s-1 { border-left-color: #f79009; background: #fffaeb; }
+.fault-card.s-2 { border-left-color: #1570ef; background: #eff8ff; }
+.fault-card.s-3 { border-left-color: #98a2b3; }
+.card-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.fault-no { font-weight: 600; }
+.fault-state { font-size: 12px; color: var(--muted); background: #eef2f7; border-radius: 999px; padding: 1px 8px; }
+.card-line { font-size: 12px; line-height: 1.7; color: #344054; }
+.card-line .k { display: inline-block; width: 60px; color: var(--muted); }
+.card-line.conclusion { margin-top: 2px; }
+.signer { color: var(--muted); font-style: normal; }
+.card-actions { display: flex; gap: 10px; margin-top: 4px; }
+.cell-empty { color: #98a2b3; }
+.board-hint { font-size: 12px; color: var(--muted); margin: 8px 0 0; }
+
+/* 待复查清单 */
+.recheck-block { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; margin-bottom: 14px; }
+.block-title { font-size: 14px; margin: 0 0 8px; }
+
+/* 弹窗 */
+.modal-mask { position: fixed; inset: 0; background: rgba(16, 24, 40, 0.45); display: flex; align-items: center; justify-content: center; z-index: 20; }
+.modal { background: #fff; border-radius: 8px; padding: 18px 20px; width: 460px; max-width: calc(100vw - 32px); }
+.modal h3 { margin: 0 0 4px; font-size: 16px; }
+.modal-sub { margin: 0 0 12px; font-size: 12px; color: var(--muted); }
+.form-item { display: block; margin-bottom: 12px; }
+.form-item span { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+.form-item input, .form-item textarea { width: 100%; border: 1px solid var(--border); border-radius: 6px; padding: 6px 8px; font: inherit; resize: vertical; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 8px; }
